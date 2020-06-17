@@ -1,6 +1,6 @@
 define({
   "name": "Scrum Api Documentation",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Documentation abour Scrum Project",
   "autor": "Daniel A. Yepes Ahumedo",
   "sampleUrl": false,
@@ -8,7 +8,7 @@ define({
   "apidoc": "0.3.0",
   "generator": {
     "name": "apidoc",
-    "time": "2020-06-10T06:10:34.686Z",
+    "time": "2020-06-17T04:01:57.678Z",
     "url": "http://apidocjs.com",
     "version": "0.23.0"
   }
