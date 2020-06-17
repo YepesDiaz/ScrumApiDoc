@@ -32,9 +32,72 @@ define({ "api": [
     "url": "/ScrumApi/projects",
     "title": "FindAll projects",
     "name": "FindAll",
+    "version": "0.2.0",
+    "group": "Projects",
+    "success": {
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n     \"projects\": [\n         {\n             \"_id\": \"5edef236ce57a93424efd36b\",\n             \"title\": \"title proof\",\n             \"objectives\": \"objetivo1,objetivo2\",\n             \"sprint\": \"sprint\",\n             \"stakeHolder\": \"st\"\n          }\n       ]\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "Error",
+            "description": "<p>findAll projects 'Error findAll projects'</p>"
+          }
+        ]
+      }
+    },
+    "filename": "./apidoc.js",
+    "groupTitle": "Projects"
+  },
+  {
+    "type": "get",
+    "url": "/ScrumApi/projects",
+    "title": "FindAll projects",
+    "name": "FindAll",
     "version": "0.1.0",
     "group": "Projects",
     "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "title",
+            "description": "<p>Project's title</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "objectives",
+            "description": "<p>Project's objectives.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "sprint",
+            "description": "<p>Project's sprints.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "stakeHolder",
+            "description": "<p>Project's stakeHolders.</p>"
+          }
+        ]
+      },
       "examples": [
         {
           "title": "Success-Response:",
@@ -85,6 +148,89 @@ define({ "api": [
           }
         ]
       }
+    },
+    "filename": "./apidoc.js",
+    "groupTitle": "Projects"
+  },
+  {
+    "type": "get",
+    "url": "/ScrumApi/project/:id",
+    "title": "GetProject by Id",
+    "name": "GetProject",
+    "version": "0.2.0",
+    "group": "Projects",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Project unique ID.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "title",
+            "description": "<p>Project's title</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "objectives",
+            "description": "<p>Project's objectives.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "sprint",
+            "description": "<p>Project's sprints.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "stakeHolder",
+            "description": "<p>Project's stakeHolders.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP/1.1 200 OK\n{\n     \"projects\": {\n         \"_id\": \"5edef236ce57a93424efd36b\",\n         \"title\": \"title proof\",\n         \"objectives\": \"objetivo1,objetivo2\",\n         \"sprint\": \"sprint\",\n         \"stakeHolder\": \"st\"\n       }\n }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "Project",
+            "description": "<p>not Found for id.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found\n {\n   \"message\": \"project NO exist\"\n}",
+          "type": "json"
+        }
+      ]
     },
     "filename": "./apidoc.js",
     "groupTitle": "Projects"
