@@ -479,6 +479,189 @@
   },
   {
     "type": "get",
+    "url": "/ScrumApi/sprints",
+    "title": "FindAll sprints",
+    "name": "FindAll",
+    "version": "0.1.0",
+    "group": "Sprints",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Task",
+            "optional": false,
+            "field": "Sprint",
+            "description": "<p>'s task list.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Sprint's project.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "    HTTP/1.1 200 OK\n    [\n \"sprints\": {\n     \"task\": [\n        \"5efaa7669a16910404a41da1\",\n        \"5efab04732b2b02950240bb8\"\n     ],\n     \"_id\": \"5efab63fad4edc2ec87f3a1c\",\n     \"name\": \"sprint\",\n     \"description\": \"description\",\n     \"initialDate\": \"2020-05-20T05:05:00.000Z\",\n     \"finalDate\": \"2020-09-20T05:05:00.000Z\"\n }\n]",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "Error",
+            "description": "<p>findAll sprints 'Error findAll sprints'</p>"
+          }
+        ]
+      }
+    },
+    "filename": "./apidoc.js",
+    "groupTitle": "Sprints"
+  },
+  {
+    "type": "get",
+    "url": "/ScrumApi/sprint/:id",
+    "title": "GetSprint by Id",
+    "name": "GetSprint",
+    "version": "0.1.0",
+    "group": "Sprints",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "id",
+            "description": "<p>Sprint unique ID.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Task",
+            "optional": false,
+            "field": "Sprint",
+            "description": "<p>'s task list.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Sprint's project.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "   HTTP/1.1 200 OK\n  {\n\"sprints\": {\n    \"task\": [\n       \"5efaa7669a16910404a41da1\",\n       \"5efab04732b2b02950240bb8\"\n    ],\n    \"_id\": \"5efab63fad4edc2ec87f3a1c\",\n    \"name\": \"sprint\",\n    \"description\": \"description\",\n    \"initialDate\": \"2020-05-20T05:05:00.000Z\",\n    \"finalDate\": \"2020-09-20T05:05:00.000Z\"\n}\n    }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "Sprint",
+            "description": "<p>not Found for id.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found\n {\n   \"message\": \"sprint NO exist\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./apidoc.js",
+    "groupTitle": "Sprints"
+  },
+  {
+    "type": "post",
+    "url": "/ScrumApi/sprint",
+    "title": "Save sprint",
+    "name": "SaveSprint",
+    "version": "0.1.0",
+    "group": "Sprints",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Task",
+            "optional": false,
+            "field": "Sprint",
+            "description": "<p>'s task list, split by commas.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Sprint's project.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "   HTTP/1.1 200 OK\n  {\n\"sprints\": {\n    \"task\": [\n       \"5efaa7669a16910404a41da1\",\n       \"5efab04732b2b02950240bb8\"\n    ],\n    \"_id\": \"5efab63fad4edc2ec87f3a1c\",\n    \"name\": \"sprint\",\n    \"description\": \"description\",\n    \"initialDate\": \"2020-05-20T05:05:00.000Z\",\n    \"finalDate\": \"2020-09-20T05:05:00.000Z\"\n}\n    }",
+          "type": "json"
+        }
+      ]
+    },
+    "parameter": {
+      "examples": [
+        {
+          "title": "Json of project example :",
+          "content": "{\n\t\"name\": \"sprint\",\n   \"description\": \"description\",\n   \"tasks\": [\"5efaa7669a16910404a41da1\"],\n   \"initialDate\": \"2020-05-20T05:05:00Z\",\n   \"finalDate\": \"2020-09-20T05:05:00Z\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "Error",
+            "description": "<p>making POST request.</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 500 Not Found\n {\n   \"message\": \"Error making POST request\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "filename": "./apidoc.js",
+    "groupTitle": "Sprints"
+  },
+  {
+    "type": "get",
     "url": "/ScrumApi/tasks",
     "title": "FindAll tasks",
     "name": "FindAll_tasks",
